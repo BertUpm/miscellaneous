@@ -17,11 +17,21 @@ public:
 	 * @brief calculates the tilt compensated heading of the electronic compass
 	 * @param acc acceleration sensor data [m/s²]
 	 * @param mag magnetic sensor data [G]
-	 * @param compensate_tilt if this parameter is set to true, the tilt is compensated using accelerometer data
-	 * @return heading in radiant
+	 * @return tilt compensated heading in radiant
 	 */
 	static float calcHeading(float const acc_x, float const acc_y, float const acc_z,
-			float const mag_x, float const mag_y, float const mag_z, bool const compensate_tilt);
+				float const mag_x, float const mag_y, float const mag_z) {
+		return calcHeading(acc_x, acc_y, acc_z, mag_x, mag_y, mag_z, true);
+	}
+
+	/**
+	 * @brief calculates the not tilt compensated heading of the electronic compass
+	 * @param mag magnetic sensor data [G]
+	 * @return not tilt compensated heading in radiant
+	 */
+	static float calcHeading(float const mag_x, float const mag_y, float const mag_z) {
+		return calcHeading(0.0f, 0.0f, 0.0f, mag_x, mag_y, mag_z, false);
+	}
 
 private:
 	/**
@@ -33,6 +43,17 @@ private:
 	 * @brief Destructor
 	 */
 	~compass() { }
+
+	/**
+	 * @brief calculates the tilt compensated heading of the electronic compass
+	 * @param acc acceleration sensor data [m/s²]
+	 * @param mag magnetic sensor data [G]
+	 * @param compensate_tilt if this parameter is set to true, the tilt is compensated using accelerometer data
+	 * @return heading in radiant
+	 */
+	static float calcHeading(float const acc_x, float const acc_y, float const acc_z,
+			float const mag_x, float const mag_y, float const mag_z, bool const compensate_tilt);
+
 
 };
 

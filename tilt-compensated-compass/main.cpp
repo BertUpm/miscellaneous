@@ -22,14 +22,14 @@ int main(int argc, char **argv) {
 
 	std::cout << "Testing module without tilt compensation" << std::endl;
 	try {
-		std::cout << "Heading [rad] = " << compass::calcHeading(0.0f, 0.0f, 0.0f, mag[0], mag[1], mag[2], false) << std::endl;
+		std::cout << "Heading [rad] = " << compass::calcHeading(mag[0], mag[1], mag[2]) << std::endl;
 	} catch(std::runtime_error &e) {
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
 	std::cout << "Testing module with tilt compensation" << std::endl;
 	try {
-		std::cout << "Heading [rad] = " << compass::calcHeading(acc[0], acc[1], acc[2], mag[0], mag[1], mag[2], true) << std::endl;
+		std::cout << "Heading [rad] = " << compass::calcHeading(acc[0], acc[1], acc[2], mag[0], mag[1], mag[2]) << std::endl;
 	} catch(std::runtime_error &e) {
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
