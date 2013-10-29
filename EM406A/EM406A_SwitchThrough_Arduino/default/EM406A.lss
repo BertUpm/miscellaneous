@@ -1,0 +1,1672 @@
+
+EM406A.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000009fc  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000133  00800100  00800100  00000a70  2**0
+                  ALLOC
+  2 .stab         000006cc  00000000  00000000  00000a70  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  0000113c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000060  00000000  00000000  000011c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 00000257  00000000  00000000  00001221  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000890  00000000  00000000  00001478  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000003bb  00000000  00000000  00001d08  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000944  00000000  00000000  000020c3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000210  00000000  00000000  00002a08  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000002e6  00000000  00000000  00002c18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_pubtypes 000000a0  00000000  00000000  00002efe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  00002f9e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__vector_2>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 40 01 	jmp	0x280	; 0x280 <__vector_9>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 22 02 	jmp	0x444	; 0x444 <__vector_16>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 bf 03 	jmp	0x77e	; 0x77e <__vector_18>
+  4c:	0c 94 1f 04 	jmp	0x83e	; 0x83e <__vector_19>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	12 e0       	ldi	r17, 0x02	; 2
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a3 33       	cpi	r26, 0x33	; 51
+  80:	b1 07       	cpc	r27, r17
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 48 00 	call	0x90	; 0x90 <main>
+  88:	0c 94 fc 04 	jmp	0x9f8	; 0x9f8 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <main>:
+ * @brief init function for the uC
+ */
+void init();
+
+
+int main() {
+  90:	df 93       	push	r29
+  92:	cf 93       	push	r28
+  94:	0f 92       	push	r0
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+
+	// call the init function
+	init();
+  9a:	0e 94 5e 00 	call	0xbc	; 0xbc <init>
+
+	// main loop
+	for(;;) {
+		while(SoftUART_RxBufferEmpty()) { };
+  9e:	00 00       	nop
+  a0:	0e 94 b8 00 	call	0x170	; 0x170 <SoftUART_RxBufferEmpty>
+  a4:	88 23       	and	r24, r24
+  a6:	e1 f7       	brne	.-8      	; 0xa0 <main+0x10>
+		uint8_t c;
+		c = SoftUART_GetByte();
+  a8:	0e 94 af 00 	call	0x15e	; 0x15e <SoftUART_GetByte>
+  ac:	89 83       	std	Y+1, r24	; 0x01
+		UART_WriteBytes(&c, 1);
+  ae:	ce 01       	movw	r24, r28
+  b0:	01 96       	adiw	r24, 0x01	; 1
+  b2:	61 e0       	ldi	r22, 0x01	; 1
+  b4:	0e 94 f2 03 	call	0x7e4	; 0x7e4 <UART_WriteBytes>
+	}
+  b8:	00 00       	nop
+	// call the init function
+	init();
+
+	// main loop
+	for(;;) {
+		while(SoftUART_RxBufferEmpty()) { };
+  ba:	f2 cf       	rjmp	.-28     	; 0xa0 <main+0x10>
+
+000000bc <init>:
+}
+
+/*
+ * @brief init function for the uC
+ */
+void init() {
+  bc:	df 93       	push	r29
+  be:	cf 93       	push	r28
+  c0:	cd b7       	in	r28, 0x3d	; 61
+  c2:	de b7       	in	r29, 0x3e	; 62
+	
+	sys.all_flags = 0;
+  c4:	10 92 32 02 	sts	0x0232, r1
+
+	UART_Init(BAUD115200);
+  c8:	80 e1       	ldi	r24, 0x10	; 16
+  ca:	0e 94 7f 03 	call	0x6fe	; 0x6fe <UART_Init>
+
+	SoftUART_Init();
+  ce:	0e 94 6d 00 	call	0xda	; 0xda <SoftUART_Init>
+
+	sei();
+  d2:	78 94       	sei
+
+}
+  d4:	cf 91       	pop	r28
+  d6:	df 91       	pop	r29
+  d8:	08 95       	ret
+
+000000da <SoftUART_Init>:
+ 
+
+/*
+ * @brief initialization of the software uart
+ */
+void SoftUART_Init() {
+  da:	df 93       	push	r29
+  dc:	cf 93       	push	r28
+  de:	cd b7       	in	r28, 0x3d	; 61
+  e0:	de b7       	in	r29, 0x3e	; 62
+	UART_PORT |=  (1<<TX_PIN); // set TX Pin to idle value
+  e2:	8b e2       	ldi	r24, 0x2B	; 43
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	2b e2       	ldi	r18, 0x2B	; 43
+  e8:	30 e0       	ldi	r19, 0x00	; 0
+  ea:	f9 01       	movw	r30, r18
+  ec:	20 81       	ld	r18, Z
+  ee:	24 60       	ori	r18, 0x04	; 4
+  f0:	fc 01       	movw	r30, r24
+  f2:	20 83       	st	Z, r18
+	UART_PORT |=  (1<<RX_PIN); // PullUp for RX
+  f4:	8b e2       	ldi	r24, 0x2B	; 43
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	2b e2       	ldi	r18, 0x2B	; 43
+  fa:	30 e0       	ldi	r19, 0x00	; 0
+  fc:	f9 01       	movw	r30, r18
+  fe:	20 81       	ld	r18, Z
+ 100:	28 60       	ori	r18, 0x08	; 8
+ 102:	fc 01       	movw	r30, r24
+ 104:	20 83       	st	Z, r18
+	UART_DIR  |=  (1<<TX_PIN); // set TX Pin to output
+ 106:	8a e2       	ldi	r24, 0x2A	; 42
+ 108:	90 e0       	ldi	r25, 0x00	; 0
+ 10a:	2a e2       	ldi	r18, 0x2A	; 42
+ 10c:	30 e0       	ldi	r19, 0x00	; 0
+ 10e:	f9 01       	movw	r30, r18
+ 110:	20 81       	ld	r18, Z
+ 112:	24 60       	ori	r18, 0x04	; 4
+ 114:	fc 01       	movw	r30, r24
+ 116:	20 83       	st	Z, r18
+	UART_DIR  &= ~(1<<RX_PIN); // set RX Pin to input
+ 118:	8a e2       	ldi	r24, 0x2A	; 42
+ 11a:	90 e0       	ldi	r25, 0x00	; 0
+ 11c:	2a e2       	ldi	r18, 0x2A	; 42
+ 11e:	30 e0       	ldi	r19, 0x00	; 0
+ 120:	f9 01       	movw	r30, r18
+ 122:	20 81       	ld	r18, Z
+ 124:	27 7f       	andi	r18, 0xF7	; 247
+ 126:	fc 01       	movw	r30, r24
+ 128:	20 83       	st	Z, r18
+
+	EICRA |= (1<<ISC11);	   // since RX is on INT1 Pin we activate 
+ 12a:	89 e6       	ldi	r24, 0x69	; 105
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	29 e6       	ldi	r18, 0x69	; 105
+ 130:	30 e0       	ldi	r19, 0x00	; 0
+ 132:	f9 01       	movw	r30, r18
+ 134:	20 81       	ld	r18, Z
+ 136:	28 60       	ori	r18, 0x08	; 8
+ 138:	fc 01       	movw	r30, r24
+ 13a:	20 83       	st	Z, r18
+	// interrupts if the value changes from 1 to 0 (start condition)
+	EIMSK |= (1<<INT1);		   // enable interrupt for RX Pin
+ 13c:	8d e3       	ldi	r24, 0x3D	; 61
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	2d e3       	ldi	r18, 0x3D	; 61
+ 142:	30 e0       	ldi	r19, 0x00	; 0
+ 144:	f9 01       	movw	r30, r18
+ 146:	20 81       	ld	r18, Z
+ 148:	22 60       	ori	r18, 0x02	; 2
+ 14a:	fc 01       	movw	r30, r24
+ 14c:	20 83       	st	Z, r18
+	sys.flag.SoftUART_Rx = 0;  // no data received so far
+ 14e:	80 91 32 02 	lds	r24, 0x0232
+ 152:	8d 7f       	andi	r24, 0xFD	; 253
+ 154:	80 93 32 02 	sts	0x0232, r24
+}
+ 158:	cf 91       	pop	r28
+ 15a:	df 91       	pop	r29
+ 15c:	08 95       	ret
+
+0000015e <SoftUART_GetByte>:
+
+/*
+ * @brief get a byte from the ringbuffer
+ */
+uint8_t SoftUART_GetByte() {
+ 15e:	df 93       	push	r29
+ 160:	cf 93       	push	r28
+ 162:	cd b7       	in	r28, 0x3d	; 61
+ 164:	de b7       	in	r29, 0x3e	; 62
+	return GetFromRxBuffer();
+ 166:	0e 94 11 03 	call	0x622	; 0x622 <GetFromRxBuffer>
+}
+ 16a:	cf 91       	pop	r28
+ 16c:	df 91       	pop	r29
+ 16e:	08 95       	ret
+
+00000170 <SoftUART_RxBufferEmpty>:
+
+/*
+ * @brief returns 1 if buffer is empty, 0 otherwise
+ */
+uint8_t SoftUART_RxBufferEmpty() {
+ 170:	df 93       	push	r29
+ 172:	cf 93       	push	r28
+ 174:	cd b7       	in	r28, 0x3d	; 61
+ 176:	de b7       	in	r29, 0x3e	; 62
+	if(RX_N == 0) return 1;
+ 178:	80 91 85 01 	lds	r24, 0x0185
+ 17c:	88 23       	and	r24, r24
+ 17e:	11 f4       	brne	.+4      	; 0x184 <SoftUART_RxBufferEmpty+0x14>
+ 180:	81 e0       	ldi	r24, 0x01	; 1
+ 182:	01 c0       	rjmp	.+2      	; 0x186 <SoftUART_RxBufferEmpty+0x16>
+	else          return 0;
+ 184:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 186:	cf 91       	pop	r28
+ 188:	df 91       	pop	r29
+ 18a:	08 95       	ret
+
+0000018c <SoftUART_PutByte>:
+
+/*
+ * @brief store a byte to the transmit ringbuffer
+ */
+void SoftUART_PutByte(uint8_t val) {
+ 18c:	df 93       	push	r29
+ 18e:	cf 93       	push	r28
+ 190:	0f 92       	push	r0
+ 192:	cd b7       	in	r28, 0x3d	; 61
+ 194:	de b7       	in	r29, 0x3e	; 62
+ 196:	89 83       	std	Y+1, r24	; 0x01
+	PutToTxBuffer(val);
+ 198:	89 81       	ldd	r24, Y+1	; 0x01
+ 19a:	0e 94 34 03 	call	0x668	; 0x668 <PutToTxBuffer>
+}
+ 19e:	0f 90       	pop	r0
+ 1a0:	cf 91       	pop	r28
+ 1a2:	df 91       	pop	r29
+ 1a4:	08 95       	ret
+
+000001a6 <__vector_2>:
+
+
+/*
+ * @brief ISR for the RX pin
+ */
+ISR(INT1_vect) {
+ 1a6:	1f 92       	push	r1
+ 1a8:	0f 92       	push	r0
+ 1aa:	0f b6       	in	r0, 0x3f	; 63
+ 1ac:	0f 92       	push	r0
+ 1ae:	11 24       	eor	r1, r1
+ 1b0:	2f 93       	push	r18
+ 1b2:	3f 93       	push	r19
+ 1b4:	4f 93       	push	r20
+ 1b6:	5f 93       	push	r21
+ 1b8:	6f 93       	push	r22
+ 1ba:	7f 93       	push	r23
+ 1bc:	8f 93       	push	r24
+ 1be:	9f 93       	push	r25
+ 1c0:	af 93       	push	r26
+ 1c2:	bf 93       	push	r27
+ 1c4:	ef 93       	push	r30
+ 1c6:	ff 93       	push	r31
+ 1c8:	df 93       	push	r29
+ 1ca:	cf 93       	push	r28
+ 1cc:	cd b7       	in	r28, 0x3d	; 61
+ 1ce:	de b7       	in	r29, 0x3e	; 62
+	// start bit received, start timer 2 for decoding the message
+	if(softUART_RX_State == IDLE) {
+ 1d0:	80 91 00 01 	lds	r24, 0x0100
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	71 f4       	brne	.+28     	; 0x1f4 <__vector_2+0x4e>
+		softUART_RX_State = START;
+ 1d8:	81 e0       	ldi	r24, 0x01	; 1
+ 1da:	80 93 00 01 	sts	0x0100, r24
+		EIMSK &= ~(1<<INT1); // disable interrupts for RX pin
+ 1de:	8d e3       	ldi	r24, 0x3D	; 61
+ 1e0:	90 e0       	ldi	r25, 0x00	; 0
+ 1e2:	2d e3       	ldi	r18, 0x3D	; 61
+ 1e4:	30 e0       	ldi	r19, 0x00	; 0
+ 1e6:	f9 01       	movw	r30, r18
+ 1e8:	20 81       	ld	r18, Z
+ 1ea:	2d 7f       	andi	r18, 0xFD	; 253
+ 1ec:	fc 01       	movw	r30, r24
+ 1ee:	20 83       	st	Z, r18
+		timer2_start(); // start the reading timer
+ 1f0:	0e 94 0d 01 	call	0x21a	; 0x21a <timer2_start>
+	}	
+}
+ 1f4:	cf 91       	pop	r28
+ 1f6:	df 91       	pop	r29
+ 1f8:	ff 91       	pop	r31
+ 1fa:	ef 91       	pop	r30
+ 1fc:	bf 91       	pop	r27
+ 1fe:	af 91       	pop	r26
+ 200:	9f 91       	pop	r25
+ 202:	8f 91       	pop	r24
+ 204:	7f 91       	pop	r23
+ 206:	6f 91       	pop	r22
+ 208:	5f 91       	pop	r21
+ 20a:	4f 91       	pop	r20
+ 20c:	3f 91       	pop	r19
+ 20e:	2f 91       	pop	r18
+ 210:	0f 90       	pop	r0
+ 212:	0f be       	out	0x3f, r0	; 63
+ 214:	0f 90       	pop	r0
+ 216:	1f 90       	pop	r1
+ 218:	18 95       	reti
+
+0000021a <timer2_start>:
+
+/*
+ * @brief start timer 2
+ */
+void timer2_start() {
+ 21a:	df 93       	push	r29
+ 21c:	cf 93       	push	r28
+ 21e:	cd b7       	in	r28, 0x3d	; 61
+ 220:	de b7       	in	r29, 0x3e	; 62
+	// Prescaler = 32
+	// Baudrate = 4800 Baud
+	// Time pro Bit = 208.33333 us
+	// TCNT2 Reload Value in first to get an offset of half a bit is
+	// therefor 255 - 208 / (2*2) for sample
+	TCNT2   = (255 - (208/4));
+ 222:	82 eb       	ldi	r24, 0xB2	; 178
+ 224:	90 e0       	ldi	r25, 0x00	; 0
+ 226:	2b ec       	ldi	r18, 0xCB	; 203
+ 228:	fc 01       	movw	r30, r24
+ 22a:	20 83       	st	Z, r18
+	// enable prescaler
+	TCCR2B = (1<<CS21) | (1<<CS20);
+ 22c:	81 eb       	ldi	r24, 0xB1	; 177
+ 22e:	90 e0       	ldi	r25, 0x00	; 0
+ 230:	23 e0       	ldi	r18, 0x03	; 3
+ 232:	fc 01       	movw	r30, r24
+ 234:	20 83       	st	Z, r18
+	// enable timer 2 overflow interrupt
+	TIMSK2 |= (1<<TOIE2);
+ 236:	80 e7       	ldi	r24, 0x70	; 112
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	20 e7       	ldi	r18, 0x70	; 112
+ 23c:	30 e0       	ldi	r19, 0x00	; 0
+ 23e:	f9 01       	movw	r30, r18
+ 240:	20 81       	ld	r18, Z
+ 242:	21 60       	ori	r18, 0x01	; 1
+ 244:	fc 01       	movw	r30, r24
+ 246:	20 83       	st	Z, r18
+}
+ 248:	cf 91       	pop	r28
+ 24a:	df 91       	pop	r29
+ 24c:	08 95       	ret
+
+0000024e <timer2_stop>:
+
+/*
+ * @brief stop timer 2
+ */
+void timer2_stop() {
+ 24e:	df 93       	push	r29
+ 250:	cf 93       	push	r28
+ 252:	cd b7       	in	r28, 0x3d	; 61
+ 254:	de b7       	in	r29, 0x3e	; 62
+	// disable prescaler
+	TCCR2B &= ~((1<<CS22) | (1<<CS21) | (1<<CS20));
+ 256:	81 eb       	ldi	r24, 0xB1	; 177
+ 258:	90 e0       	ldi	r25, 0x00	; 0
+ 25a:	21 eb       	ldi	r18, 0xB1	; 177
+ 25c:	30 e0       	ldi	r19, 0x00	; 0
+ 25e:	f9 01       	movw	r30, r18
+ 260:	20 81       	ld	r18, Z
+ 262:	28 7f       	andi	r18, 0xF8	; 248
+ 264:	fc 01       	movw	r30, r24
+ 266:	20 83       	st	Z, r18
+	// enable timer 2 overflow interrupt
+	TIMSK2 &= ~(1<<TOIE2);
+ 268:	80 e7       	ldi	r24, 0x70	; 112
+ 26a:	90 e0       	ldi	r25, 0x00	; 0
+ 26c:	20 e7       	ldi	r18, 0x70	; 112
+ 26e:	30 e0       	ldi	r19, 0x00	; 0
+ 270:	f9 01       	movw	r30, r18
+ 272:	20 81       	ld	r18, Z
+ 274:	2e 7f       	andi	r18, 0xFE	; 254
+ 276:	fc 01       	movw	r30, r24
+ 278:	20 83       	st	Z, r18
+}
+ 27a:	cf 91       	pop	r28
+ 27c:	df 91       	pop	r29
+ 27e:	08 95       	ret
+
+00000280 <__vector_9>:
+
+/*
+ * @brief ISR for timer 2 overflow
+ */
+ISR(TIMER2_OVF_vect) {
+ 280:	1f 92       	push	r1
+ 282:	0f 92       	push	r0
+ 284:	0f b6       	in	r0, 0x3f	; 63
+ 286:	0f 92       	push	r0
+ 288:	11 24       	eor	r1, r1
+ 28a:	2f 93       	push	r18
+ 28c:	3f 93       	push	r19
+ 28e:	4f 93       	push	r20
+ 290:	5f 93       	push	r21
+ 292:	6f 93       	push	r22
+ 294:	7f 93       	push	r23
+ 296:	8f 93       	push	r24
+ 298:	9f 93       	push	r25
+ 29a:	af 93       	push	r26
+ 29c:	bf 93       	push	r27
+ 29e:	ef 93       	push	r30
+ 2a0:	ff 93       	push	r31
+ 2a2:	df 93       	push	r29
+ 2a4:	cf 93       	push	r28
+ 2a6:	0f 92       	push	r0
+ 2a8:	cd b7       	in	r28, 0x3d	; 61
+ 2aa:	de b7       	in	r29, 0x3e	; 62
+	TCNT2 = (255 - (208/2));
+ 2ac:	82 eb       	ldi	r24, 0xB2	; 178
+ 2ae:	90 e0       	ldi	r25, 0x00	; 0
+ 2b0:	27 e9       	ldi	r18, 0x97	; 151
+ 2b2:	fc 01       	movw	r30, r24
+ 2b4:	20 83       	st	Z, r18
+
+	switch(softUART_RX_State) {
+ 2b6:	80 91 00 01 	lds	r24, 0x0100
+ 2ba:	88 2f       	mov	r24, r24
+ 2bc:	90 e0       	ldi	r25, 0x00	; 0
+ 2be:	81 30       	cpi	r24, 0x01	; 1
+ 2c0:	91 05       	cpc	r25, r1
+ 2c2:	79 f0       	breq	.+30     	; 0x2e2 <__vector_9+0x62>
+ 2c4:	82 30       	cpi	r24, 0x02	; 2
+ 2c6:	91 05       	cpc	r25, r1
+ 2c8:	24 f4       	brge	.+8      	; 0x2d2 <__vector_9+0x52>
+ 2ca:	00 97       	sbiw	r24, 0x00	; 0
+ 2cc:	09 f4       	brne	.+2      	; 0x2d0 <__vector_9+0x50>
+ 2ce:	64 c0       	rjmp	.+200    	; 0x398 <__vector_9+0x118>
+ 2d0:	5f c0       	rjmp	.+190    	; 0x390 <__vector_9+0x110>
+ 2d2:	82 30       	cpi	r24, 0x02	; 2
+ 2d4:	91 05       	cpc	r25, r1
+ 2d6:	69 f0       	breq	.+26     	; 0x2f2 <__vector_9+0x72>
+ 2d8:	83 30       	cpi	r24, 0x03	; 3
+ 2da:	91 05       	cpc	r25, r1
+ 2dc:	09 f4       	brne	.+2      	; 0x2e0 <__vector_9+0x60>
+ 2de:	41 c0       	rjmp	.+130    	; 0x362 <__vector_9+0xe2>
+ 2e0:	57 c0       	rjmp	.+174    	; 0x390 <__vector_9+0x110>
+		case IDLE: 
+		break;
+		case START: {
+						softUART_RX_State  = BIT;
+ 2e2:	82 e0       	ldi	r24, 0x02	; 2
+ 2e4:	80 93 00 01 	sts	0x0100, r24
+						softUART_RX_BitCnt = 0;
+ 2e8:	10 92 01 01 	sts	0x0101, r1
+						softUART_RX_Data   = 0x00;
+ 2ec:	10 92 02 01 	sts	0x0102, r1
+					}
+		break;
+ 2f0:	56 c0       	rjmp	.+172    	; 0x39e <__vector_9+0x11e>
+		case BIT:	{
+						// read pin value and store it accordingly
+						uint8_t rxPin = 0;
+ 2f2:	19 82       	std	Y+1, r1	; 0x01
+						if(UART_PIN & (1<<RX_PIN)) { rxPin = 1; }
+ 2f4:	89 e2       	ldi	r24, 0x29	; 41
+ 2f6:	90 e0       	ldi	r25, 0x00	; 0
+ 2f8:	fc 01       	movw	r30, r24
+ 2fa:	80 81       	ld	r24, Z
+ 2fc:	88 2f       	mov	r24, r24
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	88 70       	andi	r24, 0x08	; 8
+ 302:	90 70       	andi	r25, 0x00	; 0
+ 304:	00 97       	sbiw	r24, 0x00	; 0
+ 306:	19 f0       	breq	.+6      	; 0x30e <__vector_9+0x8e>
+ 308:	81 e0       	ldi	r24, 0x01	; 1
+ 30a:	89 83       	std	Y+1, r24	; 0x01
+ 30c:	01 c0       	rjmp	.+2      	; 0x310 <__vector_9+0x90>
+						else                       { rxPin = 0; }
+ 30e:	19 82       	std	Y+1, r1	; 0x01
+						softUART_RX_Data +=  (rxPin << softUART_RX_BitCnt);
+ 310:	89 81       	ldd	r24, Y+1	; 0x01
+ 312:	88 2f       	mov	r24, r24
+ 314:	90 e0       	ldi	r25, 0x00	; 0
+ 316:	20 91 01 01 	lds	r18, 0x0101
+ 31a:	22 2f       	mov	r18, r18
+ 31c:	30 e0       	ldi	r19, 0x00	; 0
+ 31e:	02 2e       	mov	r0, r18
+ 320:	02 c0       	rjmp	.+4      	; 0x326 <__vector_9+0xa6>
+ 322:	88 0f       	add	r24, r24
+ 324:	99 1f       	adc	r25, r25
+ 326:	0a 94       	dec	r0
+ 328:	e2 f7       	brpl	.-8      	; 0x322 <__vector_9+0xa2>
+ 32a:	98 2f       	mov	r25, r24
+ 32c:	80 91 02 01 	lds	r24, 0x0102
+ 330:	89 0f       	add	r24, r25
+ 332:	80 93 02 01 	sts	0x0102, r24
+						softUART_RX_BitCnt++;
+ 336:	80 91 01 01 	lds	r24, 0x0101
+ 33a:	8f 5f       	subi	r24, 0xFF	; 255
+ 33c:	80 93 01 01 	sts	0x0101, r24
+						if(softUART_RX_BitCnt == 8) {
+ 340:	80 91 01 01 	lds	r24, 0x0101
+ 344:	88 30       	cpi	r24, 0x08	; 8
+ 346:	51 f5       	brne	.+84     	; 0x39c <__vector_9+0x11c>
+							softUART_RX_State = STOPP;
+ 348:	83 e0       	ldi	r24, 0x03	; 3
+ 34a:	80 93 00 01 	sts	0x0100, r24
+							PutToRxBuffer(softUART_RX_Data); // save data
+ 34e:	80 91 02 01 	lds	r24, 0x0102
+ 352:	0e 94 ef 02 	call	0x5de	; 0x5de <PutToRxBuffer>
+							sys.flag.SoftUART_Rx = 1;  // data received
+ 356:	80 91 32 02 	lds	r24, 0x0232
+ 35a:	82 60       	ori	r24, 0x02	; 2
+ 35c:	80 93 32 02 	sts	0x0232, r24
+						}
+					}
+		break;
+ 360:	1e c0       	rjmp	.+60     	; 0x39e <__vector_9+0x11e>
+		case STOPP: {
+						softUART_RX_State = IDLE;
+ 362:	10 92 00 01 	sts	0x0100, r1
+						timer2_stop();
+ 366:	0e 94 27 01 	call	0x24e	; 0x24e <timer2_stop>
+						EIFR  |= (1<<INTF1); // clear the eventually set interrupt flag by writing
+ 36a:	8c e3       	ldi	r24, 0x3C	; 60
+ 36c:	90 e0       	ldi	r25, 0x00	; 0
+ 36e:	2c e3       	ldi	r18, 0x3C	; 60
+ 370:	30 e0       	ldi	r19, 0x00	; 0
+ 372:	f9 01       	movw	r30, r18
+ 374:	20 81       	ld	r18, Z
+ 376:	22 60       	ori	r18, 0x02	; 2
+ 378:	fc 01       	movw	r30, r24
+ 37a:	20 83       	st	Z, r18
+						// a logical one to it (see datasheet page 72)
+						EIMSK |= (1<<INT1); // activate interrupts again
+ 37c:	8d e3       	ldi	r24, 0x3D	; 61
+ 37e:	90 e0       	ldi	r25, 0x00	; 0
+ 380:	2d e3       	ldi	r18, 0x3D	; 61
+ 382:	30 e0       	ldi	r19, 0x00	; 0
+ 384:	f9 01       	movw	r30, r18
+ 386:	20 81       	ld	r18, Z
+ 388:	22 60       	ori	r18, 0x02	; 2
+ 38a:	fc 01       	movw	r30, r24
+ 38c:	20 83       	st	Z, r18
+					}	
+		break;		
+ 38e:	07 c0       	rjmp	.+14     	; 0x39e <__vector_9+0x11e>
+		default: 	softUART_RX_State = IDLE;
+ 390:	10 92 00 01 	sts	0x0100, r1
+		break;		
+ 394:	00 00       	nop
+ 396:	03 c0       	rjmp	.+6      	; 0x39e <__vector_9+0x11e>
+ISR(TIMER2_OVF_vect) {
+	TCNT2 = (255 - (208/2));
+
+	switch(softUART_RX_State) {
+		case IDLE: 
+		break;
+ 398:	00 00       	nop
+ 39a:	01 c0       	rjmp	.+2      	; 0x39e <__vector_9+0x11e>
+							softUART_RX_State = STOPP;
+							PutToRxBuffer(softUART_RX_Data); // save data
+							sys.flag.SoftUART_Rx = 1;  // data received
+						}
+					}
+		break;
+ 39c:	00 00       	nop
+					}	
+		break;		
+		default: 	softUART_RX_State = IDLE;
+		break;		
+	}
+}
+ 39e:	0f 90       	pop	r0
+ 3a0:	cf 91       	pop	r28
+ 3a2:	df 91       	pop	r29
+ 3a4:	ff 91       	pop	r31
+ 3a6:	ef 91       	pop	r30
+ 3a8:	bf 91       	pop	r27
+ 3aa:	af 91       	pop	r26
+ 3ac:	9f 91       	pop	r25
+ 3ae:	8f 91       	pop	r24
+ 3b0:	7f 91       	pop	r23
+ 3b2:	6f 91       	pop	r22
+ 3b4:	5f 91       	pop	r21
+ 3b6:	4f 91       	pop	r20
+ 3b8:	3f 91       	pop	r19
+ 3ba:	2f 91       	pop	r18
+ 3bc:	0f 90       	pop	r0
+ 3be:	0f be       	out	0x3f, r0	; 63
+ 3c0:	0f 90       	pop	r0
+ 3c2:	1f 90       	pop	r1
+ 3c4:	18 95       	reti
+
+000003c6 <timer0_start>:
+
+/*
+ * @brief start timer 0
+ */
+void timer0_start() {
+ 3c6:	df 93       	push	r29
+ 3c8:	cf 93       	push	r28
+ 3ca:	cd b7       	in	r28, 0x3d	; 61
+ 3cc:	de b7       	in	r29, 0x3e	; 62
+	// 1 Timer Step = 4 us
+	// Prescaler = 64
+	// Baudrate = 4800 Baud
+	// Time pro Bit = 208.33333 us
+	// TCNT0 Reload Value = 255 - 208 / 4 for transmit
+	TCNT0   = (255 - (208/4));
+ 3ce:	86 e4       	ldi	r24, 0x46	; 70
+ 3d0:	90 e0       	ldi	r25, 0x00	; 0
+ 3d2:	2b ec       	ldi	r18, 0xCB	; 203
+ 3d4:	fc 01       	movw	r30, r24
+ 3d6:	20 83       	st	Z, r18
+	// enable prescaler
+	TCCR0B = (1<<CS01) | (1<<CS00);
+ 3d8:	85 e4       	ldi	r24, 0x45	; 69
+ 3da:	90 e0       	ldi	r25, 0x00	; 0
+ 3dc:	23 e0       	ldi	r18, 0x03	; 3
+ 3de:	fc 01       	movw	r30, r24
+ 3e0:	20 83       	st	Z, r18
+	// enable timer 0 overflow interrupt
+	TIMSK0 |= (1<<TOIE0);
+ 3e2:	8e e6       	ldi	r24, 0x6E	; 110
+ 3e4:	90 e0       	ldi	r25, 0x00	; 0
+ 3e6:	2e e6       	ldi	r18, 0x6E	; 110
+ 3e8:	30 e0       	ldi	r19, 0x00	; 0
+ 3ea:	f9 01       	movw	r30, r18
+ 3ec:	20 81       	ld	r18, Z
+ 3ee:	21 60       	ori	r18, 0x01	; 1
+ 3f0:	fc 01       	movw	r30, r24
+ 3f2:	20 83       	st	Z, r18
+}
+ 3f4:	cf 91       	pop	r28
+ 3f6:	df 91       	pop	r29
+ 3f8:	08 95       	ret
+
+000003fa <timer0_stop>:
+
+/*
+ * @brief stop timer 0
+ */
+void timer0_stop() {
+ 3fa:	df 93       	push	r29
+ 3fc:	cf 93       	push	r28
+ 3fe:	cd b7       	in	r28, 0x3d	; 61
+ 400:	de b7       	in	r29, 0x3e	; 62
+	// disable prescaler
+	TCCR0B &= ~((1<<CS02) | (1<<CS01) | (1<<CS00));
+ 402:	85 e4       	ldi	r24, 0x45	; 69
+ 404:	90 e0       	ldi	r25, 0x00	; 0
+ 406:	25 e4       	ldi	r18, 0x45	; 69
+ 408:	30 e0       	ldi	r19, 0x00	; 0
+ 40a:	f9 01       	movw	r30, r18
+ 40c:	20 81       	ld	r18, Z
+ 40e:	28 7f       	andi	r18, 0xF8	; 248
+ 410:	fc 01       	movw	r30, r24
+ 412:	20 83       	st	Z, r18
+	// enable timer 0 overflow interrupt
+	TIMSK0 &= ~(1<<TOIE0);
+ 414:	8e e6       	ldi	r24, 0x6E	; 110
+ 416:	90 e0       	ldi	r25, 0x00	; 0
+ 418:	2e e6       	ldi	r18, 0x6E	; 110
+ 41a:	30 e0       	ldi	r19, 0x00	; 0
+ 41c:	f9 01       	movw	r30, r18
+ 41e:	20 81       	ld	r18, Z
+ 420:	2e 7f       	andi	r18, 0xFE	; 254
+ 422:	fc 01       	movw	r30, r24
+ 424:	20 83       	st	Z, r18
+}
+ 426:	cf 91       	pop	r28
+ 428:	df 91       	pop	r29
+ 42a:	08 95       	ret
+
+0000042c <timer0_active>:
+
+/*
+ * @brief returns 1 if timer 0 is active, 0 otherwise
+ */
+uint8_t timer0_active() {
+ 42c:	df 93       	push	r29
+ 42e:	cf 93       	push	r28
+ 430:	cd b7       	in	r28, 0x3d	; 61
+ 432:	de b7       	in	r29, 0x3e	; 62
+	return (TCCR0B & (1<<CS00));
+ 434:	85 e4       	ldi	r24, 0x45	; 69
+ 436:	90 e0       	ldi	r25, 0x00	; 0
+ 438:	fc 01       	movw	r30, r24
+ 43a:	80 81       	ld	r24, Z
+ 43c:	81 70       	andi	r24, 0x01	; 1
+}
+ 43e:	cf 91       	pop	r28
+ 440:	df 91       	pop	r29
+ 442:	08 95       	ret
+
+00000444 <__vector_16>:
+
+/*
+ * @brief ISR for timer 0 overflow
+ */
+ISR(TIMER0_OVF_vect) {
+ 444:	1f 92       	push	r1
+ 446:	0f 92       	push	r0
+ 448:	0f b6       	in	r0, 0x3f	; 63
+ 44a:	0f 92       	push	r0
+ 44c:	11 24       	eor	r1, r1
+ 44e:	2f 93       	push	r18
+ 450:	3f 93       	push	r19
+ 452:	4f 93       	push	r20
+ 454:	5f 93       	push	r21
+ 456:	6f 93       	push	r22
+ 458:	7f 93       	push	r23
+ 45a:	8f 93       	push	r24
+ 45c:	9f 93       	push	r25
+ 45e:	af 93       	push	r26
+ 460:	bf 93       	push	r27
+ 462:	ef 93       	push	r30
+ 464:	ff 93       	push	r31
+ 466:	df 93       	push	r29
+ 468:	cf 93       	push	r28
+ 46a:	0f 92       	push	r0
+ 46c:	cd b7       	in	r28, 0x3d	; 61
+ 46e:	de b7       	in	r29, 0x3e	; 62
+	TCNT0 = (255 - (208/4));
+ 470:	86 e4       	ldi	r24, 0x46	; 70
+ 472:	90 e0       	ldi	r25, 0x00	; 0
+ 474:	2b ec       	ldi	r18, 0xCB	; 203
+ 476:	fc 01       	movw	r30, r24
+ 478:	20 83       	st	Z, r18
+
+	switch(softUART_TX_State) {
+ 47a:	80 91 86 01 	lds	r24, 0x0186
+ 47e:	88 2f       	mov	r24, r24
+ 480:	90 e0       	ldi	r25, 0x00	; 0
+ 482:	81 30       	cpi	r24, 0x01	; 1
+ 484:	91 05       	cpc	r25, r1
+ 486:	91 f0       	breq	.+36     	; 0x4ac <__vector_16+0x68>
+ 488:	82 30       	cpi	r24, 0x02	; 2
+ 48a:	91 05       	cpc	r25, r1
+ 48c:	1c f4       	brge	.+6      	; 0x494 <__vector_16+0x50>
+ 48e:	00 97       	sbiw	r24, 0x00	; 0
+ 490:	49 f0       	breq	.+18     	; 0x4a4 <__vector_16+0x60>
+ 492:	7a c0       	rjmp	.+244    	; 0x588 <__vector_16+0x144>
+ 494:	82 30       	cpi	r24, 0x02	; 2
+ 496:	91 05       	cpc	r25, r1
+ 498:	e1 f0       	breq	.+56     	; 0x4d2 <__vector_16+0x8e>
+ 49a:	83 30       	cpi	r24, 0x03	; 3
+ 49c:	91 05       	cpc	r25, r1
+ 49e:	09 f4       	brne	.+2      	; 0x4a2 <__vector_16+0x5e>
+ 4a0:	5d c0       	rjmp	.+186    	; 0x55c <__vector_16+0x118>
+ 4a2:	72 c0       	rjmp	.+228    	; 0x588 <__vector_16+0x144>
+		case IDLE: 	softUART_TX_State  = START;
+ 4a4:	81 e0       	ldi	r24, 0x01	; 1
+ 4a6:	80 93 86 01 	sts	0x0186, r24
+		break;
+ 4aa:	71 c0       	rjmp	.+226    	; 0x58e <__vector_16+0x14a>
+		case START: softUART_TX_State  = BIT;
+ 4ac:	82 e0       	ldi	r24, 0x02	; 2
+ 4ae:	80 93 86 01 	sts	0x0186, r24
+					softUART_TX_BitCnt = 0;
+ 4b2:	10 92 87 01 	sts	0x0187, r1
+					softUART_TX_Data   = GetFromTxBuffer();
+ 4b6:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <GetFromTxBuffer>
+ 4ba:	80 93 88 01 	sts	0x0188, r24
+					UART_PORT &= ~(1<<TX_PIN); // set start condition
+ 4be:	8b e2       	ldi	r24, 0x2B	; 43
+ 4c0:	90 e0       	ldi	r25, 0x00	; 0
+ 4c2:	2b e2       	ldi	r18, 0x2B	; 43
+ 4c4:	30 e0       	ldi	r19, 0x00	; 0
+ 4c6:	f9 01       	movw	r30, r18
+ 4c8:	20 81       	ld	r18, Z
+ 4ca:	2b 7f       	andi	r18, 0xFB	; 251
+ 4cc:	fc 01       	movw	r30, r24
+ 4ce:	20 83       	st	Z, r18
+		break;
+ 4d0:	5e c0       	rjmp	.+188    	; 0x58e <__vector_16+0x14a>
+		case BIT:	
+					if(softUART_RX_BitCnt >= 8) {
+ 4d2:	80 91 01 01 	lds	r24, 0x0101
+ 4d6:	88 30       	cpi	r24, 0x08	; 8
+ 4d8:	40 f0       	brcs	.+16     	; 0x4ea <__vector_16+0xa6>
+						softUART_RX_State = STOPP;
+ 4da:	83 e0       	ldi	r24, 0x03	; 3
+ 4dc:	80 93 00 01 	sts	0x0100, r24
+						PutToRxBuffer(softUART_RX_Data); // save data
+ 4e0:	80 91 02 01 	lds	r24, 0x0102
+ 4e4:	0e 94 ef 02 	call	0x5de	; 0x5de <PutToRxBuffer>
+						uint8_t txPin = (softUART_TX_Data & (1<<softUART_RX_BitCnt)) >> (softUART_RX_BitCnt);
+						if(txPin == 1) { UART_PORT |=  (1<<TX_PIN); }
+						else           { UART_PORT &= ~(1<<TX_PIN); }
+						softUART_TX_BitCnt++;
+					}
+		break;
+ 4e8:	52 c0       	rjmp	.+164    	; 0x58e <__vector_16+0x14a>
+					if(softUART_RX_BitCnt >= 8) {
+						softUART_RX_State = STOPP;
+						PutToRxBuffer(softUART_RX_Data); // save data
+					}
+					else {
+						uint8_t txPin = (softUART_TX_Data & (1<<softUART_RX_BitCnt)) >> (softUART_RX_BitCnt);
+ 4ea:	80 91 88 01 	lds	r24, 0x0188
+ 4ee:	28 2f       	mov	r18, r24
+ 4f0:	30 e0       	ldi	r19, 0x00	; 0
+ 4f2:	80 91 01 01 	lds	r24, 0x0101
+ 4f6:	48 2f       	mov	r20, r24
+ 4f8:	50 e0       	ldi	r21, 0x00	; 0
+ 4fa:	81 e0       	ldi	r24, 0x01	; 1
+ 4fc:	90 e0       	ldi	r25, 0x00	; 0
+ 4fe:	04 2e       	mov	r0, r20
+ 500:	02 c0       	rjmp	.+4      	; 0x506 <__vector_16+0xc2>
+ 502:	88 0f       	add	r24, r24
+ 504:	99 1f       	adc	r25, r25
+ 506:	0a 94       	dec	r0
+ 508:	e2 f7       	brpl	.-8      	; 0x502 <__vector_16+0xbe>
+ 50a:	82 23       	and	r24, r18
+ 50c:	93 23       	and	r25, r19
+ 50e:	20 91 01 01 	lds	r18, 0x0101
+ 512:	22 2f       	mov	r18, r18
+ 514:	30 e0       	ldi	r19, 0x00	; 0
+ 516:	02 2e       	mov	r0, r18
+ 518:	02 c0       	rjmp	.+4      	; 0x51e <__vector_16+0xda>
+ 51a:	95 95       	asr	r25
+ 51c:	87 95       	ror	r24
+ 51e:	0a 94       	dec	r0
+ 520:	e2 f7       	brpl	.-8      	; 0x51a <__vector_16+0xd6>
+ 522:	89 83       	std	Y+1, r24	; 0x01
+						if(txPin == 1) { UART_PORT |=  (1<<TX_PIN); }
+ 524:	89 81       	ldd	r24, Y+1	; 0x01
+ 526:	81 30       	cpi	r24, 0x01	; 1
+ 528:	51 f4       	brne	.+20     	; 0x53e <__vector_16+0xfa>
+ 52a:	8b e2       	ldi	r24, 0x2B	; 43
+ 52c:	90 e0       	ldi	r25, 0x00	; 0
+ 52e:	2b e2       	ldi	r18, 0x2B	; 43
+ 530:	30 e0       	ldi	r19, 0x00	; 0
+ 532:	f9 01       	movw	r30, r18
+ 534:	20 81       	ld	r18, Z
+ 536:	24 60       	ori	r18, 0x04	; 4
+ 538:	fc 01       	movw	r30, r24
+ 53a:	20 83       	st	Z, r18
+ 53c:	09 c0       	rjmp	.+18     	; 0x550 <__vector_16+0x10c>
+						else           { UART_PORT &= ~(1<<TX_PIN); }
+ 53e:	8b e2       	ldi	r24, 0x2B	; 43
+ 540:	90 e0       	ldi	r25, 0x00	; 0
+ 542:	2b e2       	ldi	r18, 0x2B	; 43
+ 544:	30 e0       	ldi	r19, 0x00	; 0
+ 546:	f9 01       	movw	r30, r18
+ 548:	20 81       	ld	r18, Z
+ 54a:	2b 7f       	andi	r18, 0xFB	; 251
+ 54c:	fc 01       	movw	r30, r24
+ 54e:	20 83       	st	Z, r18
+						softUART_TX_BitCnt++;
+ 550:	80 91 87 01 	lds	r24, 0x0187
+ 554:	8f 5f       	subi	r24, 0xFF	; 255
+ 556:	80 93 87 01 	sts	0x0187, r24
+					}
+		break;
+ 55a:	19 c0       	rjmp	.+50     	; 0x58e <__vector_16+0x14a>
+		case STOPP: UART_PORT |=  (1<<TX_PIN); // set stop condition
+ 55c:	8b e2       	ldi	r24, 0x2B	; 43
+ 55e:	90 e0       	ldi	r25, 0x00	; 0
+ 560:	2b e2       	ldi	r18, 0x2B	; 43
+ 562:	30 e0       	ldi	r19, 0x00	; 0
+ 564:	f9 01       	movw	r30, r18
+ 566:	20 81       	ld	r18, Z
+ 568:	24 60       	ori	r18, 0x04	; 4
+ 56a:	fc 01       	movw	r30, r24
+ 56c:	20 83       	st	Z, r18
+					if(TX_N == 0) {  // after all bits are sent -> stop tx
+ 56e:	80 91 0b 02 	lds	r24, 0x020B
+ 572:	88 23       	and	r24, r24
+ 574:	29 f4       	brne	.+10     	; 0x580 <__vector_16+0x13c>
+						softUART_RX_State = IDLE;
+ 576:	10 92 00 01 	sts	0x0100, r1
+						timer0_stop();
+ 57a:	0e 94 fd 01 	call	0x3fa	; 0x3fa <timer0_stop>
+					}
+					else {
+						softUART_RX_State = START;
+					}
+		break;		
+ 57e:	07 c0       	rjmp	.+14     	; 0x58e <__vector_16+0x14a>
+					if(TX_N == 0) {  // after all bits are sent -> stop tx
+						softUART_RX_State = IDLE;
+						timer0_stop();
+					}
+					else {
+						softUART_RX_State = START;
+ 580:	81 e0       	ldi	r24, 0x01	; 1
+ 582:	80 93 00 01 	sts	0x0100, r24
+					}
+		break;		
+ 586:	03 c0       	rjmp	.+6      	; 0x58e <__vector_16+0x14a>
+		default: 	softUART_RX_State = IDLE;
+ 588:	10 92 00 01 	sts	0x0100, r1
+		break;		
+ 58c:	00 00       	nop
+	}
+}
+ 58e:	0f 90       	pop	r0
+ 590:	cf 91       	pop	r28
+ 592:	df 91       	pop	r29
+ 594:	ff 91       	pop	r31
+ 596:	ef 91       	pop	r30
+ 598:	bf 91       	pop	r27
+ 59a:	af 91       	pop	r26
+ 59c:	9f 91       	pop	r25
+ 59e:	8f 91       	pop	r24
+ 5a0:	7f 91       	pop	r23
+ 5a2:	6f 91       	pop	r22
+ 5a4:	5f 91       	pop	r21
+ 5a6:	4f 91       	pop	r20
+ 5a8:	3f 91       	pop	r19
+ 5aa:	2f 91       	pop	r18
+ 5ac:	0f 90       	pop	r0
+ 5ae:	0f be       	out	0x3f, r0	; 63
+ 5b0:	0f 90       	pop	r0
+ 5b2:	1f 90       	pop	r1
+ 5b4:	18 95       	reti
+
+000005b6 <IncrPtr>:
+
+
+/*
+ * @brief increments pointers of the ringbuffer
+ */
+uint8_t IncrPtr(uint8_t ptr) {
+ 5b6:	df 93       	push	r29
+ 5b8:	cf 93       	push	r28
+ 5ba:	00 d0       	rcall	.+0      	; 0x5bc <IncrPtr+0x6>
+ 5bc:	cd b7       	in	r28, 0x3d	; 61
+ 5be:	de b7       	in	r29, 0x3e	; 62
+ 5c0:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t tmp = ptr + 1;
+ 5c2:	8a 81       	ldd	r24, Y+2	; 0x02
+ 5c4:	8f 5f       	subi	r24, 0xFF	; 255
+ 5c6:	89 83       	std	Y+1, r24	; 0x01
+	if(tmp == RX_SIZE) { return 0;   }
+ 5c8:	89 81       	ldd	r24, Y+1	; 0x01
+ 5ca:	80 38       	cpi	r24, 0x80	; 128
+ 5cc:	11 f4       	brne	.+4      	; 0x5d2 <IncrPtr+0x1c>
+ 5ce:	80 e0       	ldi	r24, 0x00	; 0
+ 5d0:	01 c0       	rjmp	.+2      	; 0x5d4 <IncrPtr+0x1e>
+	else 			   { return tmp; }
+ 5d2:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 5d4:	0f 90       	pop	r0
+ 5d6:	0f 90       	pop	r0
+ 5d8:	cf 91       	pop	r28
+ 5da:	df 91       	pop	r29
+ 5dc:	08 95       	ret
+
+000005de <PutToRxBuffer>:
+
+/*
+ * @brief puts received element in the rx buffer
+ */
+void PutToRxBuffer(uint8_t val) {
+ 5de:	df 93       	push	r29
+ 5e0:	cf 93       	push	r28
+ 5e2:	0f 92       	push	r0
+ 5e4:	cd b7       	in	r28, 0x3d	; 61
+ 5e6:	de b7       	in	r29, 0x3e	; 62
+ 5e8:	89 83       	std	Y+1, r24	; 0x01
+  if(RX_N < RX_SIZE) {
+ 5ea:	80 91 85 01 	lds	r24, 0x0185
+ 5ee:	88 23       	and	r24, r24
+ 5f0:	a4 f0       	brlt	.+40     	; 0x61a <PutToRxBuffer+0x3c>
+    RX_BUF[RX_Head] = val;
+ 5f2:	80 91 83 01 	lds	r24, 0x0183
+ 5f6:	88 2f       	mov	r24, r24
+ 5f8:	90 e0       	ldi	r25, 0x00	; 0
+ 5fa:	8d 5f       	subi	r24, 0xFD	; 253
+ 5fc:	9e 4f       	sbci	r25, 0xFE	; 254
+ 5fe:	29 81       	ldd	r18, Y+1	; 0x01
+ 600:	fc 01       	movw	r30, r24
+ 602:	20 83       	st	Z, r18
+    RX_N++;
+ 604:	80 91 85 01 	lds	r24, 0x0185
+ 608:	8f 5f       	subi	r24, 0xFF	; 255
+ 60a:	80 93 85 01 	sts	0x0185, r24
+    RX_Head = IncrPtr(RX_Head);
+ 60e:	80 91 83 01 	lds	r24, 0x0183
+ 612:	0e 94 db 02 	call	0x5b6	; 0x5b6 <IncrPtr>
+ 616:	80 93 83 01 	sts	0x0183, r24
+  }
+}
+ 61a:	0f 90       	pop	r0
+ 61c:	cf 91       	pop	r28
+ 61e:	df 91       	pop	r29
+ 620:	08 95       	ret
+
+00000622 <GetFromRxBuffer>:
+
+/*
+ * @brief gets a stored element from the receive buffer
+ */
+uint8_t GetFromRxBuffer() {
+ 622:	df 93       	push	r29
+ 624:	cf 93       	push	r28
+ 626:	0f 92       	push	r0
+ 628:	cd b7       	in	r28, 0x3d	; 61
+ 62a:	de b7       	in	r29, 0x3e	; 62
+ uint8_t tmp = 0;
+ 62c:	19 82       	std	Y+1, r1	; 0x01
+ if(RX_N > 0) {
+ 62e:	80 91 85 01 	lds	r24, 0x0185
+ 632:	88 23       	and	r24, r24
+ 634:	a1 f0       	breq	.+40     	; 0x65e <GetFromRxBuffer+0x3c>
+	tmp = RX_BUF[RX_Tail];
+ 636:	80 91 84 01 	lds	r24, 0x0184
+ 63a:	88 2f       	mov	r24, r24
+ 63c:	90 e0       	ldi	r25, 0x00	; 0
+ 63e:	8d 5f       	subi	r24, 0xFD	; 253
+ 640:	9e 4f       	sbci	r25, 0xFE	; 254
+ 642:	fc 01       	movw	r30, r24
+ 644:	80 81       	ld	r24, Z
+ 646:	89 83       	std	Y+1, r24	; 0x01
+	RX_Tail = IncrPtr(RX_Tail);
+ 648:	80 91 84 01 	lds	r24, 0x0184
+ 64c:	0e 94 db 02 	call	0x5b6	; 0x5b6 <IncrPtr>
+ 650:	80 93 84 01 	sts	0x0184, r24
+	RX_N--;
+ 654:	80 91 85 01 	lds	r24, 0x0185
+ 658:	81 50       	subi	r24, 0x01	; 1
+ 65a:	80 93 85 01 	sts	0x0185, r24
+ }
+ return tmp;
+ 65e:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 660:	0f 90       	pop	r0
+ 662:	cf 91       	pop	r28
+ 664:	df 91       	pop	r29
+ 666:	08 95       	ret
+
+00000668 <PutToTxBuffer>:
+
+/*
+ * @brief puts received element in the tx buffer
+ */
+void PutToTxBuffer(uint8_t val) {
+ 668:	df 93       	push	r29
+ 66a:	cf 93       	push	r28
+ 66c:	0f 92       	push	r0
+ 66e:	cd b7       	in	r28, 0x3d	; 61
+ 670:	de b7       	in	r29, 0x3e	; 62
+ 672:	89 83       	std	Y+1, r24	; 0x01
+  if(TX_N < TX_SIZE) {
+ 674:	80 91 0b 02 	lds	r24, 0x020B
+ 678:	80 32       	cpi	r24, 0x20	; 32
+ 67a:	d0 f4       	brcc	.+52     	; 0x6b0 <PutToTxBuffer+0x48>
+    TX_BUF[TX_Head] = val;
+ 67c:	80 91 09 02 	lds	r24, 0x0209
+ 680:	88 2f       	mov	r24, r24
+ 682:	90 e0       	ldi	r25, 0x00	; 0
+ 684:	87 57       	subi	r24, 0x77	; 119
+ 686:	9e 4f       	sbci	r25, 0xFE	; 254
+ 688:	29 81       	ldd	r18, Y+1	; 0x01
+ 68a:	fc 01       	movw	r30, r24
+ 68c:	20 83       	st	Z, r18
+    TX_N++;
+ 68e:	80 91 0b 02 	lds	r24, 0x020B
+ 692:	8f 5f       	subi	r24, 0xFF	; 255
+ 694:	80 93 0b 02 	sts	0x020B, r24
+    TX_Head = IncrPtr(TX_Head);
+ 698:	80 91 09 02 	lds	r24, 0x0209
+ 69c:	0e 94 db 02 	call	0x5b6	; 0x5b6 <IncrPtr>
+ 6a0:	80 93 09 02 	sts	0x0209, r24
+	if(!timer0_active()) { timer0_start(); }
+ 6a4:	0e 94 16 02 	call	0x42c	; 0x42c <timer0_active>
+ 6a8:	88 23       	and	r24, r24
+ 6aa:	11 f4       	brne	.+4      	; 0x6b0 <PutToTxBuffer+0x48>
+ 6ac:	0e 94 e3 01 	call	0x3c6	; 0x3c6 <timer0_start>
+  }
+}
+ 6b0:	0f 90       	pop	r0
+ 6b2:	cf 91       	pop	r28
+ 6b4:	df 91       	pop	r29
+ 6b6:	08 95       	ret
+
+000006b8 <GetFromTxBuffer>:
+
+/*
+ * @brief gets a stored element from the transmit buffer
+ */
+uint8_t GetFromTxBuffer() {
+ 6b8:	df 93       	push	r29
+ 6ba:	cf 93       	push	r28
+ 6bc:	0f 92       	push	r0
+ 6be:	cd b7       	in	r28, 0x3d	; 61
+ 6c0:	de b7       	in	r29, 0x3e	; 62
+ uint8_t tmp = 0;
+ 6c2:	19 82       	std	Y+1, r1	; 0x01
+ if(TX_N > 0) {
+ 6c4:	80 91 0b 02 	lds	r24, 0x020B
+ 6c8:	88 23       	and	r24, r24
+ 6ca:	a1 f0       	breq	.+40     	; 0x6f4 <GetFromTxBuffer+0x3c>
+	tmp = TX_BUF[TX_Tail];
+ 6cc:	80 91 0a 02 	lds	r24, 0x020A
+ 6d0:	88 2f       	mov	r24, r24
+ 6d2:	90 e0       	ldi	r25, 0x00	; 0
+ 6d4:	87 57       	subi	r24, 0x77	; 119
+ 6d6:	9e 4f       	sbci	r25, 0xFE	; 254
+ 6d8:	fc 01       	movw	r30, r24
+ 6da:	80 81       	ld	r24, Z
+ 6dc:	89 83       	std	Y+1, r24	; 0x01
+	TX_Tail = IncrPtr(TX_Tail);
+ 6de:	80 91 0a 02 	lds	r24, 0x020A
+ 6e2:	0e 94 db 02 	call	0x5b6	; 0x5b6 <IncrPtr>
+ 6e6:	80 93 0a 02 	sts	0x020A, r24
+	TX_N--;
+ 6ea:	80 91 0b 02 	lds	r24, 0x020B
+ 6ee:	81 50       	subi	r24, 0x01	; 1
+ 6f0:	80 93 0b 02 	sts	0x020B, r24
+ }
+ return tmp;
+ 6f4:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 6f6:	0f 90       	pop	r0
+ 6f8:	cf 91       	pop	r28
+ 6fa:	df 91       	pop	r29
+ 6fc:	08 95       	ret
+
+000006fe <UART_Init>:
+
+
+/*
+ * @brief initialization of the software uart
+ */
+void UART_Init(uint8_t baudrate) {
+ 6fe:	df 93       	push	r29
+ 700:	cf 93       	push	r28
+ 702:	0f 92       	push	r0
+ 704:	cd b7       	in	r28, 0x3d	; 61
+ 706:	de b7       	in	r29, 0x3e	; 62
+ 708:	89 83       	std	Y+1, r24	; 0x01
+	UCSR0A |= (1<<U2X0);    // double read / write speed
+ 70a:	80 ec       	ldi	r24, 0xC0	; 192
+ 70c:	90 e0       	ldi	r25, 0x00	; 0
+ 70e:	20 ec       	ldi	r18, 0xC0	; 192
+ 710:	30 e0       	ldi	r19, 0x00	; 0
+ 712:	f9 01       	movw	r30, r18
+ 714:	20 81       	ld	r18, Z
+ 716:	22 60       	ori	r18, 0x02	; 2
+ 718:	fc 01       	movw	r30, r24
+ 71a:	20 83       	st	Z, r18
+	UCSR0B |= (1<<RXCIE0) | // enable the receive interrupt
+ 71c:	81 ec       	ldi	r24, 0xC1	; 193
+ 71e:	90 e0       	ldi	r25, 0x00	; 0
+ 720:	21 ec       	ldi	r18, 0xC1	; 193
+ 722:	30 e0       	ldi	r19, 0x00	; 0
+ 724:	f9 01       	movw	r30, r18
+ 726:	20 81       	ld	r18, Z
+ 728:	28 69       	ori	r18, 0x98	; 152
+ 72a:	fc 01       	movw	r30, r24
+ 72c:	20 83       	st	Z, r18
+              (1<<RXEN0)  | // enable receiver
+			  (1<<TXEN0);   // enable transmitter
+	UBRR0 = baudrate;
+ 72e:	84 ec       	ldi	r24, 0xC4	; 196
+ 730:	90 e0       	ldi	r25, 0x00	; 0
+ 732:	29 81       	ldd	r18, Y+1	; 0x01
+ 734:	22 2f       	mov	r18, r18
+ 736:	30 e0       	ldi	r19, 0x00	; 0
+ 738:	fc 01       	movw	r30, r24
+ 73a:	31 83       	std	Z+1, r19	; 0x01
+ 73c:	20 83       	st	Z, r18
+	sys.flag.UART_Rx = 0;	// no data received so far
+ 73e:	80 91 32 02 	lds	r24, 0x0232
+ 742:	8e 7f       	andi	r24, 0xFE	; 254
+ 744:	80 93 32 02 	sts	0x0232, r24
+}
+ 748:	0f 90       	pop	r0
+ 74a:	cf 91       	pop	r28
+ 74c:	df 91       	pop	r29
+ 74e:	08 95       	ret
+
+00000750 <UART_GetByte>:
+
+/*
+ * @brief access date from the ring buffer
+ */
+uint8_t UART_GetByte() {
+ 750:	df 93       	push	r29
+ 752:	cf 93       	push	r28
+ 754:	cd b7       	in	r28, 0x3d	; 61
+ 756:	de b7       	in	r29, 0x3e	; 62
+	return HardGetFromRxBuffer();
+ 758:	0e 94 94 04 	call	0x928	; 0x928 <HardGetFromRxBuffer>
+}
+ 75c:	cf 91       	pop	r28
+ 75e:	df 91       	pop	r29
+ 760:	08 95       	ret
+
+00000762 <UART_RxBufferEmpty>:
+
+/*
+ * @brief returns 0 if buffer is empty, otherwise a number
+ */
+uint8_t UART_RxBufferEmpty() {
+ 762:	df 93       	push	r29
+ 764:	cf 93       	push	r28
+ 766:	cd b7       	in	r28, 0x3d	; 61
+ 768:	de b7       	in	r29, 0x3e	; 62
+	if(RX_N == 0) return 1;
+ 76a:	80 91 1e 02 	lds	r24, 0x021E
+ 76e:	88 23       	and	r24, r24
+ 770:	11 f4       	brne	.+4      	; 0x776 <UART_RxBufferEmpty+0x14>
+ 772:	81 e0       	ldi	r24, 0x01	; 1
+ 774:	01 c0       	rjmp	.+2      	; 0x778 <UART_RxBufferEmpty+0x16>
+	else          return 0;
+ 776:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 778:	cf 91       	pop	r28
+ 77a:	df 91       	pop	r29
+ 77c:	08 95       	ret
+
+0000077e <__vector_18>:
+
+/*
+ * @brief interrupt service routine for receiving data
+ */
+ISR(USART_RX_vect) {
+ 77e:	1f 92       	push	r1
+ 780:	0f 92       	push	r0
+ 782:	0f b6       	in	r0, 0x3f	; 63
+ 784:	0f 92       	push	r0
+ 786:	11 24       	eor	r1, r1
+ 788:	2f 93       	push	r18
+ 78a:	3f 93       	push	r19
+ 78c:	4f 93       	push	r20
+ 78e:	5f 93       	push	r21
+ 790:	6f 93       	push	r22
+ 792:	7f 93       	push	r23
+ 794:	8f 93       	push	r24
+ 796:	9f 93       	push	r25
+ 798:	af 93       	push	r26
+ 79a:	bf 93       	push	r27
+ 79c:	ef 93       	push	r30
+ 79e:	ff 93       	push	r31
+ 7a0:	df 93       	push	r29
+ 7a2:	cf 93       	push	r28
+ 7a4:	cd b7       	in	r28, 0x3d	; 61
+ 7a6:	de b7       	in	r29, 0x3e	; 62
+	HardPutToRxBuffer(UDR0);
+ 7a8:	86 ec       	ldi	r24, 0xC6	; 198
+ 7aa:	90 e0       	ldi	r25, 0x00	; 0
+ 7ac:	fc 01       	movw	r30, r24
+ 7ae:	80 81       	ld	r24, Z
+ 7b0:	0e 94 72 04 	call	0x8e4	; 0x8e4 <HardPutToRxBuffer>
+	sys.flag.UART_Rx = 1;	// data received
+ 7b4:	80 91 32 02 	lds	r24, 0x0232
+ 7b8:	81 60       	ori	r24, 0x01	; 1
+ 7ba:	80 93 32 02 	sts	0x0232, r24
+}
+ 7be:	cf 91       	pop	r28
+ 7c0:	df 91       	pop	r29
+ 7c2:	ff 91       	pop	r31
+ 7c4:	ef 91       	pop	r30
+ 7c6:	bf 91       	pop	r27
+ 7c8:	af 91       	pop	r26
+ 7ca:	9f 91       	pop	r25
+ 7cc:	8f 91       	pop	r24
+ 7ce:	7f 91       	pop	r23
+ 7d0:	6f 91       	pop	r22
+ 7d2:	5f 91       	pop	r21
+ 7d4:	4f 91       	pop	r20
+ 7d6:	3f 91       	pop	r19
+ 7d8:	2f 91       	pop	r18
+ 7da:	0f 90       	pop	r0
+ 7dc:	0f be       	out	0x3f, r0	; 63
+ 7de:	0f 90       	pop	r0
+ 7e0:	1f 90       	pop	r1
+ 7e2:	18 95       	reti
+
+000007e4 <UART_WriteBytes>:
+
+/*
+ * @brief write an array of bytes in the ringbuffer for transmission
+ */
+void UART_WriteBytes(uint8_t *bytes, uint8_t size) {
+ 7e4:	df 93       	push	r29
+ 7e6:	cf 93       	push	r28
+ 7e8:	00 d0       	rcall	.+0      	; 0x7ea <UART_WriteBytes+0x6>
+ 7ea:	00 d0       	rcall	.+0      	; 0x7ec <UART_WriteBytes+0x8>
+ 7ec:	cd b7       	in	r28, 0x3d	; 61
+ 7ee:	de b7       	in	r29, 0x3e	; 62
+ 7f0:	9b 83       	std	Y+3, r25	; 0x03
+ 7f2:	8a 83       	std	Y+2, r24	; 0x02
+ 7f4:	6c 83       	std	Y+4, r22	; 0x04
+	uint8_t i=0;
+ 7f6:	19 82       	std	Y+1, r1	; 0x01
+	for(; i < size; i++) { HardPutToTxBuffer(bytes[i]); }
+ 7f8:	0e c0       	rjmp	.+28     	; 0x816 <UART_WriteBytes+0x32>
+ 7fa:	89 81       	ldd	r24, Y+1	; 0x01
+ 7fc:	88 2f       	mov	r24, r24
+ 7fe:	90 e0       	ldi	r25, 0x00	; 0
+ 800:	2a 81       	ldd	r18, Y+2	; 0x02
+ 802:	3b 81       	ldd	r19, Y+3	; 0x03
+ 804:	82 0f       	add	r24, r18
+ 806:	93 1f       	adc	r25, r19
+ 808:	fc 01       	movw	r30, r24
+ 80a:	80 81       	ld	r24, Z
+ 80c:	0e 94 b7 04 	call	0x96e	; 0x96e <HardPutToTxBuffer>
+ 810:	89 81       	ldd	r24, Y+1	; 0x01
+ 812:	8f 5f       	subi	r24, 0xFF	; 255
+ 814:	89 83       	std	Y+1, r24	; 0x01
+ 816:	99 81       	ldd	r25, Y+1	; 0x01
+ 818:	8c 81       	ldd	r24, Y+4	; 0x04
+ 81a:	98 17       	cp	r25, r24
+ 81c:	70 f3       	brcs	.-36     	; 0x7fa <UART_WriteBytes+0x16>
+	UCSR0B |= (1<<UDRIE0); // enable transmission
+ 81e:	81 ec       	ldi	r24, 0xC1	; 193
+ 820:	90 e0       	ldi	r25, 0x00	; 0
+ 822:	21 ec       	ldi	r18, 0xC1	; 193
+ 824:	30 e0       	ldi	r19, 0x00	; 0
+ 826:	f9 01       	movw	r30, r18
+ 828:	20 81       	ld	r18, Z
+ 82a:	20 62       	ori	r18, 0x20	; 32
+ 82c:	fc 01       	movw	r30, r24
+ 82e:	20 83       	st	Z, r18
+}
+ 830:	0f 90       	pop	r0
+ 832:	0f 90       	pop	r0
+ 834:	0f 90       	pop	r0
+ 836:	0f 90       	pop	r0
+ 838:	cf 91       	pop	r28
+ 83a:	df 91       	pop	r29
+ 83c:	08 95       	ret
+
+0000083e <__vector_19>:
+
+/*
+ * @brief interrupt service routine for transmitting data
+ */
+ISR(USART_UDRE_vect) {
+ 83e:	1f 92       	push	r1
+ 840:	0f 92       	push	r0
+ 842:	0f b6       	in	r0, 0x3f	; 63
+ 844:	0f 92       	push	r0
+ 846:	11 24       	eor	r1, r1
+ 848:	2f 93       	push	r18
+ 84a:	3f 93       	push	r19
+ 84c:	4f 93       	push	r20
+ 84e:	5f 93       	push	r21
+ 850:	6f 93       	push	r22
+ 852:	7f 93       	push	r23
+ 854:	8f 93       	push	r24
+ 856:	9f 93       	push	r25
+ 858:	af 93       	push	r26
+ 85a:	bf 93       	push	r27
+ 85c:	ef 93       	push	r30
+ 85e:	ff 93       	push	r31
+ 860:	df 93       	push	r29
+ 862:	cf 93       	push	r28
+ 864:	0f 92       	push	r0
+ 866:	cd b7       	in	r28, 0x3d	; 61
+ 868:	de b7       	in	r29, 0x3e	; 62
+	uint8_t data = HardGetFromTxBuffer();
+ 86a:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <HardGetFromTxBuffer>
+ 86e:	89 83       	std	Y+1, r24	; 0x01
+	UDR0 = data;
+ 870:	86 ec       	ldi	r24, 0xC6	; 198
+ 872:	90 e0       	ldi	r25, 0x00	; 0
+ 874:	29 81       	ldd	r18, Y+1	; 0x01
+ 876:	fc 01       	movw	r30, r24
+ 878:	20 83       	st	Z, r18
+	// disable interrupt if all data is transmitted
+	if(TX_N == 0) { UCSR0B &= ~(1<<UDRIE0); } 
+ 87a:	80 91 31 02 	lds	r24, 0x0231
+ 87e:	88 23       	and	r24, r24
+ 880:	49 f4       	brne	.+18     	; 0x894 <__vector_19+0x56>
+ 882:	81 ec       	ldi	r24, 0xC1	; 193
+ 884:	90 e0       	ldi	r25, 0x00	; 0
+ 886:	21 ec       	ldi	r18, 0xC1	; 193
+ 888:	30 e0       	ldi	r19, 0x00	; 0
+ 88a:	f9 01       	movw	r30, r18
+ 88c:	20 81       	ld	r18, Z
+ 88e:	2f 7d       	andi	r18, 0xDF	; 223
+ 890:	fc 01       	movw	r30, r24
+ 892:	20 83       	st	Z, r18
+}
+ 894:	0f 90       	pop	r0
+ 896:	cf 91       	pop	r28
+ 898:	df 91       	pop	r29
+ 89a:	ff 91       	pop	r31
+ 89c:	ef 91       	pop	r30
+ 89e:	bf 91       	pop	r27
+ 8a0:	af 91       	pop	r26
+ 8a2:	9f 91       	pop	r25
+ 8a4:	8f 91       	pop	r24
+ 8a6:	7f 91       	pop	r23
+ 8a8:	6f 91       	pop	r22
+ 8aa:	5f 91       	pop	r21
+ 8ac:	4f 91       	pop	r20
+ 8ae:	3f 91       	pop	r19
+ 8b0:	2f 91       	pop	r18
+ 8b2:	0f 90       	pop	r0
+ 8b4:	0f be       	out	0x3f, r0	; 63
+ 8b6:	0f 90       	pop	r0
+ 8b8:	1f 90       	pop	r1
+ 8ba:	18 95       	reti
+
+000008bc <HardIncrPtr>:
+
+/*
+ * @brief increments pointers of the ringbuffer
+ */
+uint8_t HardIncrPtr(uint8_t ptr) {
+ 8bc:	df 93       	push	r29
+ 8be:	cf 93       	push	r28
+ 8c0:	00 d0       	rcall	.+0      	; 0x8c2 <HardIncrPtr+0x6>
+ 8c2:	cd b7       	in	r28, 0x3d	; 61
+ 8c4:	de b7       	in	r29, 0x3e	; 62
+ 8c6:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t tmp = ptr + 1;
+ 8c8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 8ca:	8f 5f       	subi	r24, 0xFF	; 255
+ 8cc:	89 83       	std	Y+1, r24	; 0x01
+	if(tmp == RX_SIZE) { return 0;   }
+ 8ce:	89 81       	ldd	r24, Y+1	; 0x01
+ 8d0:	80 31       	cpi	r24, 0x10	; 16
+ 8d2:	11 f4       	brne	.+4      	; 0x8d8 <HardIncrPtr+0x1c>
+ 8d4:	80 e0       	ldi	r24, 0x00	; 0
+ 8d6:	01 c0       	rjmp	.+2      	; 0x8da <HardIncrPtr+0x1e>
+	else 			   { return tmp; }
+ 8d8:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 8da:	0f 90       	pop	r0
+ 8dc:	0f 90       	pop	r0
+ 8de:	cf 91       	pop	r28
+ 8e0:	df 91       	pop	r29
+ 8e2:	08 95       	ret
+
+000008e4 <HardPutToRxBuffer>:
+
+/*
+ * @brief puts received element in the rx buffer
+ */
+void HardPutToRxBuffer(uint8_t val) {
+ 8e4:	df 93       	push	r29
+ 8e6:	cf 93       	push	r28
+ 8e8:	0f 92       	push	r0
+ 8ea:	cd b7       	in	r28, 0x3d	; 61
+ 8ec:	de b7       	in	r29, 0x3e	; 62
+ 8ee:	89 83       	std	Y+1, r24	; 0x01
+  if(RX_N < RX_SIZE) {
+ 8f0:	80 91 1e 02 	lds	r24, 0x021E
+ 8f4:	80 31       	cpi	r24, 0x10	; 16
+ 8f6:	a0 f4       	brcc	.+40     	; 0x920 <__stack+0x21>
+    RX_BUF[RX_Head] = val;
+ 8f8:	80 91 1c 02 	lds	r24, 0x021C
+ 8fc:	88 2f       	mov	r24, r24
+ 8fe:	90 e0       	ldi	r25, 0x00	; 0
+ 900:	84 5f       	subi	r24, 0xF4	; 244
+ 902:	9d 4f       	sbci	r25, 0xFD	; 253
+ 904:	29 81       	ldd	r18, Y+1	; 0x01
+ 906:	fc 01       	movw	r30, r24
+ 908:	20 83       	st	Z, r18
+    RX_N++;
+ 90a:	80 91 1e 02 	lds	r24, 0x021E
+ 90e:	8f 5f       	subi	r24, 0xFF	; 255
+ 910:	80 93 1e 02 	sts	0x021E, r24
+    RX_Head = HardIncrPtr(RX_Head);
+ 914:	80 91 1c 02 	lds	r24, 0x021C
+ 918:	0e 94 5e 04 	call	0x8bc	; 0x8bc <HardIncrPtr>
+ 91c:	80 93 1c 02 	sts	0x021C, r24
+  }
+}
+ 920:	0f 90       	pop	r0
+ 922:	cf 91       	pop	r28
+ 924:	df 91       	pop	r29
+ 926:	08 95       	ret
+
+00000928 <HardGetFromRxBuffer>:
+
+/*
+ * @brief gets a stored element from the receive buffer
+ */
+uint8_t HardGetFromRxBuffer() {
+ 928:	df 93       	push	r29
+ 92a:	cf 93       	push	r28
+ 92c:	0f 92       	push	r0
+ 92e:	cd b7       	in	r28, 0x3d	; 61
+ 930:	de b7       	in	r29, 0x3e	; 62
+ uint8_t tmp = 0;
+ 932:	19 82       	std	Y+1, r1	; 0x01
+ if(RX_N > 0) {
+ 934:	80 91 1e 02 	lds	r24, 0x021E
+ 938:	88 23       	and	r24, r24
+ 93a:	a1 f0       	breq	.+40     	; 0x964 <HardGetFromRxBuffer+0x3c>
+	tmp = RX_BUF[RX_Tail];
+ 93c:	80 91 1d 02 	lds	r24, 0x021D
+ 940:	88 2f       	mov	r24, r24
+ 942:	90 e0       	ldi	r25, 0x00	; 0
+ 944:	84 5f       	subi	r24, 0xF4	; 244
+ 946:	9d 4f       	sbci	r25, 0xFD	; 253
+ 948:	fc 01       	movw	r30, r24
+ 94a:	80 81       	ld	r24, Z
+ 94c:	89 83       	std	Y+1, r24	; 0x01
+	RX_Tail = HardIncrPtr(RX_Tail);
+ 94e:	80 91 1d 02 	lds	r24, 0x021D
+ 952:	0e 94 5e 04 	call	0x8bc	; 0x8bc <HardIncrPtr>
+ 956:	80 93 1d 02 	sts	0x021D, r24
+	RX_N--;
+ 95a:	80 91 1e 02 	lds	r24, 0x021E
+ 95e:	81 50       	subi	r24, 0x01	; 1
+ 960:	80 93 1e 02 	sts	0x021E, r24
+ }
+ return tmp;
+ 964:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 966:	0f 90       	pop	r0
+ 968:	cf 91       	pop	r28
+ 96a:	df 91       	pop	r29
+ 96c:	08 95       	ret
+
+0000096e <HardPutToTxBuffer>:
+
+/*
+ * @brief puts received element in the tx buffer
+ */
+void HardPutToTxBuffer(uint8_t val) {
+ 96e:	df 93       	push	r29
+ 970:	cf 93       	push	r28
+ 972:	0f 92       	push	r0
+ 974:	cd b7       	in	r28, 0x3d	; 61
+ 976:	de b7       	in	r29, 0x3e	; 62
+ 978:	89 83       	std	Y+1, r24	; 0x01
+  if(TX_N < TX_SIZE) {
+ 97a:	80 91 31 02 	lds	r24, 0x0231
+ 97e:	80 34       	cpi	r24, 0x40	; 64
+ 980:	a0 f4       	brcc	.+40     	; 0x9aa <HardPutToTxBuffer+0x3c>
+    TX_BUF[TX_Head] = val;
+ 982:	80 91 2f 02 	lds	r24, 0x022F
+ 986:	88 2f       	mov	r24, r24
+ 988:	90 e0       	ldi	r25, 0x00	; 0
+ 98a:	81 5e       	subi	r24, 0xE1	; 225
+ 98c:	9d 4f       	sbci	r25, 0xFD	; 253
+ 98e:	29 81       	ldd	r18, Y+1	; 0x01
+ 990:	fc 01       	movw	r30, r24
+ 992:	20 83       	st	Z, r18
+    TX_N++;
+ 994:	80 91 31 02 	lds	r24, 0x0231
+ 998:	8f 5f       	subi	r24, 0xFF	; 255
+ 99a:	80 93 31 02 	sts	0x0231, r24
+    TX_Head = HardIncrPtr(TX_Head);
+ 99e:	80 91 2f 02 	lds	r24, 0x022F
+ 9a2:	0e 94 5e 04 	call	0x8bc	; 0x8bc <HardIncrPtr>
+ 9a6:	80 93 2f 02 	sts	0x022F, r24
+  }
+}
+ 9aa:	0f 90       	pop	r0
+ 9ac:	cf 91       	pop	r28
+ 9ae:	df 91       	pop	r29
+ 9b0:	08 95       	ret
+
+000009b2 <HardGetFromTxBuffer>:
+
+/*
+ * @brief gets a stored element from the transmit buffer
+ */
+uint8_t HardGetFromTxBuffer() {
+ 9b2:	df 93       	push	r29
+ 9b4:	cf 93       	push	r28
+ 9b6:	0f 92       	push	r0
+ 9b8:	cd b7       	in	r28, 0x3d	; 61
+ 9ba:	de b7       	in	r29, 0x3e	; 62
+ uint8_t tmp = 0;
+ 9bc:	19 82       	std	Y+1, r1	; 0x01
+ if(TX_N > 0) {
+ 9be:	80 91 31 02 	lds	r24, 0x0231
+ 9c2:	88 23       	and	r24, r24
+ 9c4:	a1 f0       	breq	.+40     	; 0x9ee <HardGetFromTxBuffer+0x3c>
+	tmp = TX_BUF[TX_Tail];
+ 9c6:	80 91 30 02 	lds	r24, 0x0230
+ 9ca:	88 2f       	mov	r24, r24
+ 9cc:	90 e0       	ldi	r25, 0x00	; 0
+ 9ce:	81 5e       	subi	r24, 0xE1	; 225
+ 9d0:	9d 4f       	sbci	r25, 0xFD	; 253
+ 9d2:	fc 01       	movw	r30, r24
+ 9d4:	80 81       	ld	r24, Z
+ 9d6:	89 83       	std	Y+1, r24	; 0x01
+	TX_Tail = HardIncrPtr(TX_Tail);
+ 9d8:	80 91 30 02 	lds	r24, 0x0230
+ 9dc:	0e 94 5e 04 	call	0x8bc	; 0x8bc <HardIncrPtr>
+ 9e0:	80 93 30 02 	sts	0x0230, r24
+	TX_N--;
+ 9e4:	80 91 31 02 	lds	r24, 0x0231
+ 9e8:	81 50       	subi	r24, 0x01	; 1
+ 9ea:	80 93 31 02 	sts	0x0231, r24
+ }
+ return tmp;
+ 9ee:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 9f0:	0f 90       	pop	r0
+ 9f2:	cf 91       	pop	r28
+ 9f4:	df 91       	pop	r29
+ 9f6:	08 95       	ret
+
+000009f8 <_exit>:
+ 9f8:	f8 94       	cli
+
+000009fa <__stop_program>:
+ 9fa:	ff cf       	rjmp	.-2      	; 0x9fa <__stop_program>

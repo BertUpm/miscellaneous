@@ -1,7 +1,7 @@
 /**
  * @author Alexander Entinger, MSc / LXRobotics
  * @brief this module demonstrate how a software pwm could be implemented
- * @file software_pwm.ino
+ * @file software_pwm.c
  */
 
 #include <avr/io.h>
