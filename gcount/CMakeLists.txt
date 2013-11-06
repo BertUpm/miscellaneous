@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.6)
+find_package(Boost)
+if(Boost_FOUND)
+	include_directories(${Boost_INCLUDE_DIRS})
+	add_executable(gcount main.cpp sparkfun_geiger_counter.cpp)
+	target_link_libraries(gcount boost_system boost_thread pthread)
+endif()
