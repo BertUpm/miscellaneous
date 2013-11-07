@@ -36,14 +36,10 @@ void sparkfun_geiger_counter::serial_byte_received(const boost::system::error_co
 		std::cerr << e.message() << std::endl;
 		return;
 	}
-
 	if(m_c == '0' || m_c == '1') {
-		{
-			boost::mutex::scoped_lock lock(m_mutex);
-			m_cpm_counter++;
-		}
+		boost::mutex::scoped_lock lock(m_mutex);
+		m_cpm_counter++;
 	}
-
 	m_c = 0;
 	boost::asio::async_read(m_serial, boost::asio::buffer(&m_c, 1), boost::bind(&sparkfun_geiger_counter::serial_byte_received, this, boost::asio::placeholders::error));
 }
@@ -56,7 +52,9 @@ void sparkfun_geiger_counter::eval_callback(const boost::system::error_code& e) 
 	m_deadline_timer.async_wait(boost::bind(&sparkfun_geiger_counter::eval_callback, this, boost::asio::placeholders::error));
 	{
 		boost::mutex::scoped_lock lock(m_mutex);
-		std::cout << m_cpm_counter << " CPM" << std::endl;
+		std::cout << m_cpm_counter << " CPM, "
+				<< static_cast<double>(m_cpm_counter) * CONVERT_TO_MICROSIEVERT_PER_HOUR << " microSv/h" << std::endl;
+
 		m_cpm_counter = 0;
 	}
 }

@@ -32,6 +32,7 @@ public:
 protected:
 	static size_t const BAUDRATE = 9600;
 	static size_t const MEASURE_TIMER_INTERVAL = 60; // 60 seconds
+	static double const CONVERT_TO_MICROSIEVERT_PER_HOUR = 1.0/108.0;
 
 private:
 	boost::asio::io_service m_io;
