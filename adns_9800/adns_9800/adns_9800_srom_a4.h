@@ -1,6 +1,6 @@
 /**
  * @author Alexander Entinger, MSc / LXRobotics
- * @brief this file contains the firmware for the mouse sensor
+ * @brief this file contains the firmware for the mouse sensor - based on https://github.com/mrjohnk/ADNS-9800
  * @file adns_9800_srom_a4.h
  */
 

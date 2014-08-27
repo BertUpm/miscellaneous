@@ -1,6 +1,6 @@
 /**
  * @author Alexander Entinger, MSc / LXRobotics
- * @brief this file contains the register defintions for the adns-9800 sensor
+ * @brief this file contains the register defintions for the adns-9800 sensor - based on https://github.com/mrjohnk/ADNS-9800
  * @file adns_9800_regs.h
  */
  

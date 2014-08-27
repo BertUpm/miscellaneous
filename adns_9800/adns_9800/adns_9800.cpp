@@ -1,6 +1,6 @@
 /**
  * @author Alexander Entinger, MSc / LXRobotics
- * @brief this class acts as interface for accessing the adns-9800 sensor
+ * @brief this class acts as interface for accessing the adns-9800 sensor - based on https://github.com/mrjohnk/ADNS-9800
  * @file adns_9800.cpp
  */
  
